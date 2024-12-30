@@ -1,11 +1,11 @@
 pandas
 numpy<2
 tensorflow
-keras==3.7.0
 keras-nlp
 sklearn.preprocessing
 scikit-learn
 pyarrow
 fastparquet
 huggingface-hub
+dill
 -e .
