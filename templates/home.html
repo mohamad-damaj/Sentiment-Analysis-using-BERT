@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BERT Text Prediction</title>
+</head>
+<body>
+    <div class="login">
+        <h1>BERT Text Prediction</h1>
+   
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <div class="mb-3">
+                <label class="form-label">Enter Text for Prediction</label>
+                <textarea class="form-control" name="text" placeholder="Enter text here..." required rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict" />
+            </div>
+        </form>
+        
+        <h2>
+            Prediction: {{ results if results else "No prediction available" }}
+        </h2>
+    </div>
+</body>
+</html>
