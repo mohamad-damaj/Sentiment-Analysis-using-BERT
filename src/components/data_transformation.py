@@ -2,10 +2,8 @@ import sys
 from dataclasses import dataclass
 import numpy as np
 import pandas as pd
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.preprocessing import LabelEncoder
 from keras_nlp.models import BertPreprocessor
 from src.exception import CustomException
 from src.logger import logging
@@ -45,7 +43,7 @@ class DataTransformation:
 
     def initiate_data_transformation(self, train_path, test_path):
         try:
-            # Load training and test data
+            # Loading training and test data
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
@@ -60,10 +58,10 @@ class DataTransformation:
             balanced_train_df = train_grouped.apply(lambda x: x.sample(min_count, random_state=42))
             balanced_train_df = balanced_train_df.reset_index(drop=True)
 
-            # Encode labels
+            # Encoding labels
             le = LabelEncoder()
             balanced_train_df["label"] = le.fit_transform(balanced_train_df["label"])
-            test_df["label"] = le.transform(test_df["label"])  # Transform test labels
+            test_df["label"] = le.transform(test_df["label"])  # Transforming the test labels
 
             logging.info(f"Label Encoder Classes: {le.classes_}")
 
@@ -77,24 +75,18 @@ class DataTransformation:
             preprocessing_obj = self.get_data_transformer_object()
 
             logging.info("Preprocessing text data")
-            # Preprocessing raw text into BERT-compatible inputs
+
             X_train = X_train_text
             X_test = X_test_text
 
-            # Combine preprocessed inputs and labels into a tuple
             train_arr = (X_train, y_train)
             test_arr = (X_test, y_test)
 
-            #logging.info(f"Saving preprocessing object.")
-            #save_object(
-            #   file_path=self.data_transformation_config.preprocessor_obj_file_path,
-            #    obj=preprocessing_obj
-            #)
+
 
             return (
                 train_arr,
                 test_arr,
-                #self.data_transformation_config.preprocessor_obj_file_path,
             )
         except Exception as e:
             raise CustomException(e, sys)
