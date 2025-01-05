@@ -23,8 +23,17 @@ def predict_datapoint():
         return render_template('home.html')
     
     else:
-        try:    
-            predict_pipeline = PredictPipeline()
+        try: 
+            class_labels = {
+                0: "Sadness",
+                1: "Joy",
+                2: "Love",
+                3: "Anger",
+                4: "Fear",
+                5: "Surprise"
+            }
+
+            predict_pipeline = PredictPipeline(class_labels=class_labels)
 
             text = request.form.get('text')
 

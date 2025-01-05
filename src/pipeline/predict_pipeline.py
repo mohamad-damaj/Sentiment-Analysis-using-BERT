@@ -28,7 +28,7 @@ class PredictPipeline:
             # Define the custom objects dictionary
             custom_objects = {
                 "BertPreprocessor": keras_nlp.models.BertPreprocessor,
-                "BertBackbone": keras_nlp.models.BertBackbone  # Include if used
+                "BertBackbone": keras_nlp.models.BertBackbone  
             }
 
             # Verify that the model directory exists
@@ -40,8 +40,9 @@ class PredictPipeline:
             model = tf.keras.models.load_model(
                 self.model_dir,
                 custom_objects=custom_objects,
-                compile=False  # Set to True if you need to compile the model upon loading
+                compile=False  
             )
+
             logging.info("Model loaded successfully.")
             return model
 
