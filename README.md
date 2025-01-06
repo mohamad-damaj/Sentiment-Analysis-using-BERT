@@ -64,7 +64,9 @@ BERTMODEL/
 ├── README.md                 # Project documentation
 ├── requirements.txt          # Python dependencies
 ├── setup.py                  # Setup script for project packaging
+```
 
+---
 
 ## **Requirements**
 
@@ -91,4 +93,98 @@ Follow these steps to set up the project:
 ```bash
 git clone https://github.com/your_username/BERT-Sentiment-Analysis.git
 cd BERT-Sentiment-Analysis
+```
+
+### **Step 2**: Create and Activate a Virtual Environment
+```bash
+python -m venv venv
+```
+
+- **On Unix or MacOS**:
+```bash
+source venv/bin/activate
+```
+- **On Windows**:
+```bash
+venv\Scripts\activate
+```
+
+### **Step 3**: Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### **Step 4**: Run the Flask Application
+```bash
+python app.py
+```
+The app will run locally, and you can access it at http://127.0.0.1:5000.
+
+---
+
+## **Usage**
+
+Once the Flask app is running:
+1. Open the web application in your browser.
+2. Enter a text snippet in the input field.
+3. Click the Submit button to see the predicted emotion.
+
+---
+
+## **Model Training and Customization**
+
+**Model Architecture**
+
+The model uses the following components:
+
+- **BERT Backbone**: Pre-trained `bert_base_en_uncased` for contextual embeddings.
+- **Preprocessing**: Tokenization and input preparation using `BertPreprocessor`.
+- **Classification Head**:
+  - Dropout layer for regularization.
+  - Dense layer with softmax activation for emotion classification.
+
+## **Training the Model**
+
+The trigger for training takes place in `data_ingestion.py`.
+
+Train the model by running:
+
+```bash
+python src/pipeline/data_ingestion.py
+```
+The trained model will be saved in the `artifact/` directory.
+
+---
+
+## **Web Application**
+
+**Features**
+- **Input Form**: Allows users to enter text for classification.
+- **Prediction Display**: Shows the predicted emotion on the results page.
+- **Error Handling**: Provides user-friendly error messages if input is missing or invalid.
+
+**Templates**
+- **index.html**: Landing page of the web app.
+- **home.html**: Displays prediction results.
+
+---
+
+## **Logging and Debugging**
+
+- **Logs** are stored in the `logs/` directory.
+- Centralized logging is implemented using Python’s `logging` module.
+- Errors are handled via the `CustomException` class in `exception.py`.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+
+
+
+
+
+
 
