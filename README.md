@@ -91,7 +91,7 @@ Follow these steps to set up the project:
 
 ### **Step 1**: Clone the Repository
 ```bash
-git clone https://github.com/your_username/BERT-Sentiment-Analysis.git
+git clone https://github.com/mohdamaj/BERT-Sentiment-Analysis.git
 cd BERT-Sentiment-Analysis
 ```
 
