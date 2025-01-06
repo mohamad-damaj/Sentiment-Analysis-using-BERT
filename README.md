@@ -66,86 +66,29 @@ BERTMODEL/
 ├── setup.py                  # Setup script for project packaging
 
 
-Requirements
+## **Requirements**
+
 The following dependencies are required to run the project:
 
-Python: Version >= 3.7
-TensorFlow: Version >= 2.9
-Flask: Version >= 2.0
-Keras NLP: For text preprocessing and embedding
-Additional libraries:
-Pandas
-NumPy
-Scikit-learn
-All dependencies are listed in the requirements.txt file.
-Installation and Setup
+- **Python**: Version >= 3.7
+- **TensorFlow**: Version >= 2.9
+- **Flask**: Version >= 2.0
+- **Keras NLP**: For text preprocessing and embedding
+- Additional libraries: 
+  - `Pandas`
+  - `NumPy`
+  - `Scikit-learn`
+
+All dependencies are listed in the `requirements.txt` file.
+
+---
+
+## **Installation and Setup**
+
 Follow these steps to set up the project:
 
-Step 1: Clone the Repository
-bash
-Copy code
+### **Step 1**: Clone the Repository
+```bash
 git clone https://github.com/your_username/BERT-Sentiment-Analysis.git
 cd BERT-Sentiment-Analysis
-Step 2: Create and Activate a Virtual Environment
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate   # On Windows: venv\Scripts\activate
-Step 3: Install Dependencies
-bash
-Copy code
-pip install -r requirements.txt
-Step 4: Run the Flask Application
-Start the application using:
 
-bash
-Copy code
-python app.py
-The app will run locally, and you can access it at http://127.0.0.1:5000.
-
-Usage
-Once the Flask app is running:
-
-Open the web application in your browser.
-Enter a text snippet in the input field.
-Click the Submit button to see the predicted emotion.
-Example:
-Input: "I am so happy today!"
-Output: Joy
-Model Training and Customization
-Model Architecture
-The model uses the following components:
-
-BERT Backbone: Pre-trained bert_base_en_uncased for contextual embeddings.
-Preprocessing: Tokenization and input preparation using BertPreprocessor.
-Classification Head:
-Dropout layer for regularization.
-Dense layer with softmax activation for emotion classification.
-Training the Model
-Update the dataset path in data_ingestion.py.
-Train the model by running:
-bash
-Copy code
-python src/pipeline/train_pipeline.py
-The trained model will be saved in the artifact/ directory.
-Web Application
-Features:
-Input Form: Allows users to enter text for classification.
-Prediction Display: Shows the predicted emotion on the results page.
-Error Handling: Provides user-friendly error messages if input is missing or invalid.
-Templates:
-index.html: Landing page of the web app.
-home.html: Displays prediction results.
-Logging and Debugging
-Logs are stored in the logs/ directory.
-Centralized logging is implemented using Python’s logging module.
-Errors are handled via the CustomException class in exception.py.
-Contributing
-Contributions are welcome! To contribute:
-
-Fork the repository.
-Create a new branch for your feature.
-Commit your changes and push them to your forked repository.
-Open a pull request to the main repository.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
