@@ -73,15 +73,15 @@ BERTMODEL/
 The following dependencies are required to run the project:
 
 - **Python**: Version >= 3.7
-- **TensorFlow**: Version >= 2.9
-- **Flask**: Version >= 2.0
-- **Keras NLP**: For text preprocessing and embedding
+- **TensorFlow**: Version >= 2.10.1
+- **TensorFlow_text**: Version >= 2.10
+- **Keras NLP**: Version >= 0.6.0
 - Additional libraries: 
   - `Pandas`
   - `NumPy`
   - `Scikit-learn`
 
-All dependencies are listed in the `requirements.txt` file.
+All dependencies are listed in the `requirements.txt` file with the working.
 
 ---
 
@@ -114,7 +114,11 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### **Step 4**: Run the Flask Application
+### **Step 4**: Train the Model
+
+Refer to [Model Training and Customization](#model-training-and-customization)
+
+### **Step 5**: Run the Flask Application
 ```bash
 python app.py
 ```
