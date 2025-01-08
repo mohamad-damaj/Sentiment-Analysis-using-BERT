@@ -44,8 +44,8 @@ class ModelTrainer:
 
             logging.info(f"Model Evaluation: Accuracy = {test_accuracy:.4f}")
 
-            #if test_accuracy < 0.6:
-                #raise CustomException("Model accuracy is too low. Training failed.")
+            if test_accuracy < 0.6:
+                raise CustomException("Model accuracy is too low. Training failed.")
 
             logging.info("Saving the trained model.")
             save_model(
