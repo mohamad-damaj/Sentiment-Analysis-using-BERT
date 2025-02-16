@@ -1,9 +1,9 @@
 pandas
 numpy<2
-tensorflow==2.10.1
-tensorflow_text==2.10
-keras==2.10.0
-keras-nlp==0.6.0
+tensorflow
+tensorflow_text
+keras
+keras-nlp
 sklearn.preprocessing
 scikit-learn
 pyarrow
