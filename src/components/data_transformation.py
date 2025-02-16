@@ -51,17 +51,15 @@ class DataTransformation:
 
             logging.info("Balancing and preprocessing the data")
 
-            # Balancing the dataset
             train_grouped = train_df.groupby("label")
             min_count = train_grouped.size().min()
 
             balanced_train_df = train_grouped.apply(lambda x: x.sample(min_count, random_state=42))
             balanced_train_df = balanced_train_df.reset_index(drop=True)
 
-            # Encoding labels
             le = LabelEncoder()
             balanced_train_df["label"] = le.fit_transform(balanced_train_df["label"])
-            test_df["label"] = le.transform(test_df["label"])  # Transforming the test labels
+            test_df["label"] = le.transform(test_df["label"])  
 
             logging.info(f"Label Encoder Classes: {le.classes_}")
 

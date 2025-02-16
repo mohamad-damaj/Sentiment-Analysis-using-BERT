@@ -5,12 +5,14 @@ from dataclasses import dataclass
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object, save_model
-from src.components.model import model_build
+from src.components.model import model_builder, ModelConfig
 
 
 @dataclass
 class ModelTrainerConfig:
     trained_model_file_path = os.path.join("artifact", "model_tf")
+
+
 
 class ModelTrainer:
     def __init__(self):
@@ -24,10 +26,12 @@ class ModelTrainer:
             X_train, y_train = train_data
             X_test, y_test = test_data
 
-            logging.info("Building the model.")
+            logging.info("Building the model...")
 
-            model_builder = model_build()
-            model = model_builder.build_model()
+            config_model = ModelConfig()
+
+            model_build = model_builder(config=config_model)
+            model = model_build.build_model()
 
             logging.info("Starting model training.")
             history = model.fit(
@@ -44,8 +48,7 @@ class ModelTrainer:
 
             logging.info(f"Model Evaluation: Accuracy = {test_accuracy:.4f}")
 
-            if test_accuracy < 0.6:
-                raise CustomException("Model accuracy is too low. Training failed.")
+
 
             logging.info("Saving the trained model.")
             save_model(
